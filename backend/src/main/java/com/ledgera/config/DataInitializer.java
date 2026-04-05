@@ -5,10 +5,13 @@ import com.ledgera.enums.Role;
 import com.ledgera.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+@Profile("!prod")
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -17,6 +20,9 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    @Value("${ledgera.seed-admin:true}")
+    private boolean seedAdmin;
+
     public DataInitializer(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -24,6 +30,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        if (!seedAdmin) {
+            logger.info("ℹ️  Admin seed disabled, skipping initialization.");
+            return;
+        }
         if (!userRepository.existsByEmail("admin@ledgera.com")) {
             User admin = User.builder()
                     .name("Admin")

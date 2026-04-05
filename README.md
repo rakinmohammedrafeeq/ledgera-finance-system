@@ -164,6 +164,12 @@ npm run preview
 - **Backend:** Render (Docker) or any container host
 - **Frontend:** Vercel (Vite static build)
 
+### Render Backend Notes
+
+- Health check path: `/healthz` (fast, unauthenticated).
+- Ensure `PORT` is provided by Render (no hardcoding needed).
+- Optional: disable admin seeding in production with `LEDGERA_SEED_ADMIN=false`.
+
 ## Known Note (Current Repository State)
 
 A backend compile issue is currently present in `LedgeraApplication.java` due to a `dotenv` import mismatch (`io.github.cdimascio.dotenv` not found at compile time). This is independent of this README update, but worth fixing before CI/CD hardening.
