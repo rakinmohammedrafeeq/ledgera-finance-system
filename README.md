@@ -164,6 +164,11 @@ npm run preview
 - **Backend:** Render (Docker) or any container host
 - **Frontend:** Vercel (Vite static build)
 
+### Vercel Frontend Notes
+
+- `VITE_API_URL` should point to your backend (e.g. `https://ledgera-backend.onrender.com`).
+- If `VITE_API_URL` is not set, `/api/*` requests are proxied via Vercel rewrites.
+
 ### Render Backend Notes
 
 - Health check path: `/healthz` (fast, unauthenticated).
