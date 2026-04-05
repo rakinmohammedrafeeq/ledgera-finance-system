@@ -6,6 +6,8 @@ const baseURL = rawBaseURL.startsWith('http')
     : `${rawBaseURL.replace(/\/$/, '')}/api`)
   : rawBaseURL.replace(/\/$/, '');
 
+const backendBaseURL = baseURL.replace(/\/api\/?$/, '');
+
 const api = axios.create({
   baseURL,
   headers: {
@@ -40,4 +42,6 @@ api.interceptors.response.use(
   }
 );
 
+export const apiBaseURL = baseURL;
+export const backendRootURL = backendBaseURL;
 export default api;

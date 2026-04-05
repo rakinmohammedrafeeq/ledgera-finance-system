@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import useBackendReady from './hooks/useBackendReady';
 import { useAuth } from './context/AuthContext';
 import PublicLayout from './components/PublicLayout';
 import DashboardLayout from './components/DashboardLayout';
@@ -15,6 +17,11 @@ import ContactPage from './pages/ContactPage';
 
 export default function App() {
   const { isAuthenticated, loading } = useAuth();
+  const { prewarm } = useBackendReady();
+
+  useEffect(() => {
+    prewarm();
+  }, [prewarm]);
 
   if (loading) {
     return (

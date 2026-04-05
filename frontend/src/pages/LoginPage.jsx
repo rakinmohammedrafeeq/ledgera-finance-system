@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import BackendLoadingOverlay from '../components/BackendLoadingOverlay';
+import useBackendReady from '../hooks/useBackendReady';
 import Logo from '../components/Logo';
 import './LoginPage.css';
 
@@ -89,6 +91,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { showLoading, showFallback, runWithBackendReady } = useBackendReady();
 
   const particles = useMemo(
     () =>
@@ -115,8 +118,10 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await login(email, password);
-      navigate('/');
+      await runWithBackendReady(async () => {
+        await login(email, password);
+        navigate('/');
+      });
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid email or password');
     } finally {
@@ -126,6 +131,7 @@ export default function LoginPage() {
 
   return (
     <div className="login-premium">
+      <BackendLoadingOverlay show={showLoading} fallback={showFallback} />
       <div className="login-premium__bg" aria-hidden="true" />
       <div className="login-premium__grid" aria-hidden="true" />
       <div className="login-premium__glow-corner login-premium__glow-corner--tl" aria-hidden="true" />
@@ -239,7 +245,7 @@ export default function LoginPage() {
                     id="login-submit"
                     type="submit"
                     className="btn btn-primary btn-full"
-                    disabled={loading}
+                    disabled={loading || showLoading}
                   >
                     {loading ? 'Signing in...' : 'Sign In'}
                   </button>

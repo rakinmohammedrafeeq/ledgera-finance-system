@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import BackendLoadingOverlay from '../components/BackendLoadingOverlay';
+import useBackendReady from '../hooks/useBackendReady';
 import Logo from '../components/Logo';
 import AuthBrandingFeatures from '../components/AuthBrandingFeatures';
 
@@ -15,6 +17,7 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
+  const { showLoading, showFallback, runWithBackendReady } = useBackendReady();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,8 +29,10 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      await register(formData.name, formData.email, formData.password, formData.role);
-      navigate('/');
+      await runWithBackendReady(async () => {
+        await register(formData.name, formData.email, formData.password, formData.role);
+        navigate('/');
+      });
     } catch (err) {
       const data = err.response?.data;
       if (data?.errors) {
@@ -43,6 +48,7 @@ export default function RegisterPage() {
 
   return (
     <div className="auth-page">
+      <BackendLoadingOverlay show={showLoading} fallback={showFallback} />
       <div className="auth-split">
         <section className="auth-branding">
           <div className="auth-branding-content">
@@ -127,7 +133,7 @@ export default function RegisterPage() {
                 id="register-submit"
                 type="submit"
                 className="btn btn-primary btn-full"
-                disabled={loading}
+                disabled={loading || showLoading}
               >
                 {loading ? 'Creating Account...' : 'Create Account'}
               </button>

@@ -1,0 +1,41 @@
+.backend-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(6, 8, 12, 0.76);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(6px);
+}
+
+.backend-loading__card {
+  max-width: 520px;
+  width: 100%;
+  background: var(--bg-darkest);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+  color: var(--text-primary);
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.backend-loading__card h2 {
+  margin: 16px 0 12px;
+  font-size: 1.4rem;
+}
+
+.backend-loading__card p {
+  margin: 6px 0;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.backend-loading__fallback {
+  margin-top: 16px;
+  color: #f87171;
+  font-weight: 600;
+}
+
