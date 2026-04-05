@@ -1,0 +1,107 @@
+.legal-page {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: var(--text-primary);
+}
+
+.legal-page__top {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.legal-page__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.legal-page__brand:hover {
+  color: var(--gold-primary);
+}
+
+.legal-page__article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.legal-page__article h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 36px;
+  background: linear-gradient(120deg, #f0e6c8 0%, var(--gold-primary) 45%, #b8962e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.legal-page__section {
+  margin-bottom: 40px;
+}
+
+.legal-page__section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(245, 245, 245, 0.92);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.legal-page__section p,
+.legal-page__section li {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(161, 161, 170, 0.95);
+}
+
+.legal-page__section a {
+  color: var(--gold-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.legal-page__section a:hover {
+  text-decoration: underline;
+}
+
+.legal-page__section ul {
+  margin: 12px 0 0;
+  padding-left: 1.25rem;
+}
+
+.legal-page__section li {
+  margin-bottom: 8px;
+}
+
+.legal-page__divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  margin: 36px 0;
+}
+
+.legal-page__contact-box {
+  margin-top: 20px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(17, 17, 17, 0.5);
+}
+
+.legal-page__contact-box a {
+  color: var(--gold-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.legal-page__contact-box a:hover {
+  text-decoration: underline;
+}
