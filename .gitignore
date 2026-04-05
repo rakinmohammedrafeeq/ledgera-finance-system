@@ -1,0 +1,64 @@
+# ===============================
+# IDE
+# ===============================
+.idea/
+*.iml
+.vscode/
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Logs
+# ===============================
+*.log
+*.out
+*.err
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ===============================
+# Environment files
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# Java / Spring Boot
+# ===============================
+backend/target/
+*.class
+*.jar
+*.war
+*.nar
+.mvn/
+**/hs_err_pid*
+backend/mvnw-dist.zip
+
+# ===============================
+# Node / Frontend
+# ===============================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ===============================
+# Build / Cache
+# ===============================
+dist/
+build/
+coverage/
+.cache/
+
+# ===============================
+# Temp files
+# ===============================
+*.tmp
+*.swp
+*.swo
