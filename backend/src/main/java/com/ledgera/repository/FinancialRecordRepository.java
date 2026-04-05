@@ -4,9 +4,11 @@ import com.ledgera.entity.FinancialRecord;
 import com.ledgera.enums.TransactionType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,9 @@ import java.util.List;
 @Repository
 public interface FinancialRecordRepository extends JpaRepository<FinancialRecord, Long>,
         JpaSpecificationExecutor<FinancialRecord> {
+
+    @EntityGraph(attributePaths = "user")
+    Page<FinancialRecord> findAll(Specification<FinancialRecord> spec, Pageable pageable);
 
     @Query("SELECT COALESCE(SUM(r.amount), 0) FROM FinancialRecord r WHERE r.type = :type")
     BigDecimal sumByType(@Param("type") TransactionType type);
@@ -35,8 +40,10 @@ public interface FinancialRecordRepository extends JpaRepository<FinancialRecord
     @Query("SELECT r.category, r.type, SUM(r.amount) FROM FinancialRecord r WHERE r.user.id = :userId GROUP BY r.category, r.type ORDER BY r.category")
     List<Object[]> getCategoryTotalsByTypeAndUser(@Param("userId") Long userId);
 
+    @EntityGraph(attributePaths = "user")
     List<FinancialRecord> findTop10ByOrderByDateDescIdDesc();
 
+    @EntityGraph(attributePaths = "user")
     List<FinancialRecord> findTop10ByUserIdOrderByDateDescIdDesc(Long userId);
 
     @Query("SELECT EXTRACT(YEAR FROM r.date), EXTRACT(MONTH FROM r.date), r.type, SUM(r.amount) " +
