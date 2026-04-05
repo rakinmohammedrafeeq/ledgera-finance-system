@@ -1,7 +1,10 @@
 [
   {
+    "source": "/api/(.*)",
+    "destination": "https://ledgera-backend.onrender.com/api/$1"
+  },
+  {
     "source": "/(.*)",
     "destination": "/index.html"
   }
 ]
-
