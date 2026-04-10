@@ -41,8 +41,6 @@ ledgera-finance-system/
 │  ├─ package.json
 │  ├─ vite.config.js
 │  └─ vercel.json
-├─ FULL_DEPLOYMENT.md
-├─ DEPLOYMENT_CHECKLIST.md
 └─ README.md
 ```
 
@@ -141,15 +139,6 @@ npm run preview
 
 ## Deployment
 
-### Quick Index
-
-- Full stack: `FULL_DEPLOYMENT.md`
-- Checklist: `DEPLOYMENT_CHECKLIST.md`
-- Backend Docker: `backend/DOCKER.md`, `backend/DOCKER-QUICKSTART.md`
-- Frontend Vercel: `frontend/VERCEL.md`
-- Frontend Render: `frontend/render.md`
-- Frontend quick start: `frontend/QUICK-DEPLOY.md`
-
 ### Typical Setup
 
 - **Backend:** Render (Docker) or any container host
@@ -166,10 +155,23 @@ npm run preview
 - Ensure `PORT` is provided by Render (no hardcoding needed).
 - Optional: disable admin seeding in production with `LEDGERA_SEED_ADMIN=false`.
 
-## Known Note (Current Repository State)
-
-A backend compile issue is currently present in `LedgeraApplication.java` due to a `dotenv` import mismatch (`io.github.cdimascio.dotenv` not found at compile time). This is independent of this README update, but worth fixing before CI/CD hardening.
-
 ## License
 
-MIT
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Contact  
+
+**For any questions or suggestions, feel free to reach out:**   
+- **Email:** rakinmohammedrafeeq@gmail.com  
+- **LinkedIn:** https://www.linkedin.com/in/rakinmohammedrafeeq  
+- **GitHub:** https://github.com/rakinmohammedrafeeq
+
+---
+
+## Support  
+
+If you find this project useful, consider giving it a ⭐ on GitHub or supporting my work:  
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/rakinmohammedrafeeq)
