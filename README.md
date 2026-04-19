@@ -1,16 +1,30 @@
-<p>
-  <img src="frontend/public/gold-logo.png" alt="AlliedEdge Logo" width="140"/>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rakinmohammedrafeeq/ledgera/main/frontend/public/gold-logo.png" alt="Ledgera Logo" width="200">
 </p>
 
 # Ledgera — Full-Stack Finance Tracking System
 
 Ledgera is a full-stack finance tracking and analytics app with role-based access control, JWT authentication, and dashboard visualizations.
 
+## Features
+
+- Secure JWT-based authentication and authorization  
+- Role-Based Access Control (Admin/User)  
+- Financial records management (income and expenses)  
+- Dashboard with analytics and visualizations  
+- Filtering and search functionality  
+- RESTful API with Spring Boot  
+- Scalable layered architecture (Controller → Service → Repository)  
+
+## Why Ledgera?
+
+Ledgera is designed to simulate a real-world financial system with secure authentication, modular backend architecture, and interactive data visualization. The goal is to reflect production-level design practices used in modern full-stack applications.
+
 ## Tech Stack
 
-- **Backend:** Java 17, Spring Boot 3.2.x, Spring Security, Spring Data JPA, Flyway
-- **Frontend:** React 18, Vite 5, React Router, Axios, Recharts
-- **Database:** PostgreSQL (default), H2 profile for local testing
+- **Backend:** Java 17, Spring Boot 3.2.x, Spring Security, Spring Data JPA, Flyway  
+- **Frontend:** React 18, Vite 5, React Router, Axios, Recharts  
+- **Database:** PostgreSQL (default), H2 profile for local testing  
 - **Auth:** JWT
 
 ## Repository Structure
@@ -163,16 +177,12 @@ npm run preview
 
 This project is licensed under the [MIT License](LICENSE).
 
----
-
 ## Contact  
 
 **For any questions or suggestions, feel free to reach out:**   
 - **Email:** rakinmohammedrafeeq@gmail.com  
 - **LinkedIn:** https://www.linkedin.com/in/rakinmohammedrafeeq  
 - **GitHub:** https://github.com/rakinmohammedrafeeq
-
----
 
 ## Support  
 
